@@ -4,8 +4,8 @@ import book
 
 class dbUI:
 
-    def __init__(self):
-        self.db = bookDB.bookDB()
+    def __init__(self,db=[]):
+        self.db = bookDB.bookDB(db)
         print('Welcome to te Book Database V1.0 \n')
         
 

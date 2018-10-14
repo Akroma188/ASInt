@@ -3,8 +3,8 @@ import os
 
 class bookDB:
 
-    def __init__(self):
-        self.database = []
+    def __init__(self,db=[]):
+        self.database = db
         self.filename = 'backup.pkl'
         if os.path.isfile(self.filename) is True:
             self.file = open(self.filename, 'rb')
