@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books by Year</title>
+</head>
+<body>
+
+<h1> Search Books by Year</h1>
+<form action="/listBooksYear_new" method="get">
+    Ener Year:    <input type="text" name="year"><br>
+    <input type="submit">
+</form>
+
+<h1> List of books:</h1>
+There Are {{count}} books in {{year}}
+<ul>
+    {% for book in book_list %}
+      <li>Book Number {{ book.id }}
+          <ul>
+              <li>Author: {{ book.author }}</li>
+              <li>Title: {{ book.title }}</li>
+              <li>Year: {{ book.year }}</li>
+          </ul>
+      </li>
+    {% endfor %}
+</ul>
+
+
+</body>
+</html>
