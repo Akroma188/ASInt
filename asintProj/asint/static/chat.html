@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Title</title>
+    <style type="text/css">
+
+    </style>
+   <link rel="stylesheet" href="jquery-ui.css"> </link>
+    <script src="jquery.js"></script>
+     <script src="jquery-ui.js"></script>
+
+</head>
+<body>
+
+
+<script>
+    //    //<![CDATA[
+    $( document ).ready(function() {
+    //     $("#searchText").keyup(
+    //         function(event){
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: "/autocomplete",
+    //                 datatype: "json",
+    //                 contentType: "application/json",
+    //                 data: '{"message":"' + $("#searchText").val() + '"'+', "building":"Técnico", "user":"Student"' + '}',
+    //                 success: function (data) {
+    //                     console.log(data);
+    //                     s = "<ol>";
+    //                         s += "<li>";
+    //                         s += "User: ";
+    //                         s += data['user'];
+    //                         s += "    Building: ";
+    //                         s += data['building'];
+    //                         s += "    Message: ";
+    //                         s += data['msg'];
+    //                     // for (var i = 0, len = data.length; i < len; i++) {
+    //                     //     s += "Building: "
+    //                     //     s += data[i];
+    //                     //     s += "     Message: "
+    //                     // }
+    //                     s += "</li>";
+    //                     s += "</ol>";
+    //                     $("#divDestiny").html(s);
+    //                 }
+    //             })
+
+
+    //         }
+
+    //     )
+        var refreshId = setInterval( function(event) 
+        {
+            $.ajax({
+                    type: "POST",
+                    url: "/reqinterval",
+                    datatype: "json",
+                    contentType: "application/json",
+                    data: '{"message":"oi"}',
+                    success: function (data) {
+                        console.log(data);
+                        if( data != 'no messagge in DB' ){
+                            s = "<ol>";
+                                s += "<li>";
+                                s += "User: ";
+                                s += data['user'];
+                                s += "    Building: ";
+                                s += data['building'];
+                                s += "    Message: ";
+                                s += data['msg'];
+                            // for (var i = 0, len = data.length; i < len; i++) {
+                            //     s += "Building: "
+                            //     s += data[i];
+                            //     s += "     Message: "
+                            // }
+                            s += "</li>";
+                            s += "</ol>";
+                            $("#divDestiny2").append(s);
+                        }
+                    }
+                })
+
+        }, 1000);
+
+
+        $( "#ButtonClick" ).click(function( event ) {
+            console.log("click");
+            $.ajax({
+                type: "POST",
+                url: "/msg",
+                dataType: "json",
+                cache: false,
+                contentType: "application/json",
+                data: '{"message":"' + $("#searchText").val() + '"'+', "building":"Técnico", "user":"Student"' + '}',
+                    success: function (data) {
+                        console.log(data);
+                        s = "<ol>";
+                            s += "<li>";
+                            s += "User: ";
+                            s += data['user'] + "\n";
+                            s += "    Building: ";
+                            s += data['building'] + "\n";
+                            s += "    Message: ";
+                            s += data['msg']+ "\n";
+                        // for (var i = 0, len = data.length; i < len; i++) {
+                        //     s += "Building: "
+                        //     s += data[i];
+                        //     s += "     Message: "
+                        // }
+                        s += "</li>";
+                        s += "</ol>";
+                    $("#divDestiny").append(s);
+                }
+            });
+        });
+    });
+        //]]>
+</script>
+
+   <h1>Input a search term</h1>
+
+
+        <input type="text" name="" size="20" id="searchText" />
+        <input type="submit" value="Search"  id="ButtonClick"/>
+
+    <div id="divDestiny">User Area
+    </div>
+    <div id="divDestiny2">Bot Area
+        </div>
+
+
+
+</body>
+</html>
