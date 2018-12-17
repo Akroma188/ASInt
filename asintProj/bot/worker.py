@@ -5,7 +5,7 @@ import botDB
 from datetime import datetime
 
 
-#INTERVAL = 60 * 60 * 6  # tweet every 6 hours
+
 INTERVAL = 5  # every 5 seconds, for testing
 bots = botDB.botDB()
 while True:
