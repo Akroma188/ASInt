@@ -1,0 +1,2 @@
+web: gunicorn deploy.py
+worker: python worker.py
